@@ -506,7 +506,7 @@ table.crt td.neu { color: var(--muted); }
     <div class="eyebrow">Tick what you've sent · ticks are saved in this browser</div>
     <h2>Screenshots I need</h2>
   </div>
-  <p class="lede">Your Nov 24 screenshots and Look texts covered the Wheel, the Cyclopedia, the Charms, the Quest Log and the gear. What's left is mostly the gems and the Combat Stats in the real hunting set.</p>
+  <p class="lede">Your Nov 24 screenshots and Look texts covered the Wheel, the gems, the Cyclopedia, the Charms, the Quest Log and the gear. What's left is the Combat Stats in the real hunting set and a few smaller pieces.</p>
   <div class="controls">
     <span class="count" id="scCount">0 of 0 done</span>
     <button type="button" class="btn" id="scReset">Clear ticks</button>
@@ -518,21 +518,20 @@ table.crt td.neu { color: var(--muted); }
       <ul>
         <li><label><input type="checkbox" data-sc="combat"><span><b>1. Combat Stats again, outside PZ, in the main set.</b> The 11:35 screens were in the depot without a weapon, so attack value (253) and crit (5% / 10%) don't show your real set.</span></label></li>
         <li><label><input type="checkbox" data-sc="quiver"><span><b>2. Look on the quiver and the extra-slot item</b>, and which ammunition is in the quiver (800 at 11:34).</span></label></li>
-        <li><label><input type="checkbox" data-sc="gems"><span><b>3. Gem Atelier.</b> The second tab of the Wheel window: which gems sit in which domain.</span></label></li>
-        <li><label><input type="checkbox" data-sc="bosscode"><span><b>4. Export code of the "boss" preset</b> pasted as text, like you did for "exp".</span></label></li>
-        <li><label><input type="checkbox" data-sc="depot"><span><b>5. Depot, Stash and Inbox.</b> Gear and supplies kept there.</span></label></li>
-        <li><label><input type="checkbox" data-sc="qend"><span><b>6. The end of the Quest Log</b>, scrolled below Too Hot to Handle.</span></label></li>
+        <li><label><input type="checkbox" data-sc="bosscode"><span><b>3. Export code of the "boss" preset</b> pasted as text, like you did for "exp".</span></label></li>
+        <li><label><input type="checkbox" data-sc="depot"><span><b>4. Depot, Stash and Inbox.</b> Gear and supplies kept there.</span></label></li>
+        <li><label><input type="checkbox" data-sc="qend"><span><b>5. The end of the Quest Log</b>, scrolled below Too Hot to Handle.</span></label></li>
       </ul>
     </div>
     <div class="card">
       <h3>Good to have</h3>
       <ul>
-        <li><label><input type="checkbox" data-sc="bless"><span><b>7. Blessings</b> after the transfer (7/7 at the auction).</span></label></li>
-        <li><label><input type="checkbox" data-sc="prey"><span><b>8. Prey, Hunting Tasks and Bounty Talisman.</b></span></label></li>
-        <li><label><input type="checkbox" data-sc="boss"><span><b>9. Bosstiary boss slots.</b></span></label></li>
-        <li><label><input type="checkbox" data-sc="bars"><span><b>10. Action bars</b> with spells and potions, for the rotation.</span></label></li>
-        <li><label><input type="checkbox" data-sc="profw"><span><b>11. Proficiency window</b> for the bow or crossbow you use.</span></label></li>
-        <li><label><input type="checkbox" data-sc="hunt"><span><b>12. Hunt Analyser after the first real hunt.</b> It starts the hunt log.</span></label></li>
+        <li><label><input type="checkbox" data-sc="bless"><span><b>6. Blessings</b> after the transfer (7/7 at the auction).</span></label></li>
+        <li><label><input type="checkbox" data-sc="prey"><span><b>7. Prey, Hunting Tasks and Bounty Talisman.</b></span></label></li>
+        <li><label><input type="checkbox" data-sc="boss"><span><b>8. Bosstiary boss slots.</b></span></label></li>
+        <li><label><input type="checkbox" data-sc="bars"><span><b>9. Action bars</b> with spells and potions, for the rotation.</span></label></li>
+        <li><label><input type="checkbox" data-sc="profw"><span><b>10. Proficiency window</b> for the bow or crossbow you use.</span></label></li>
+        <li><label><input type="checkbox" data-sc="hunt"><span><b>11. Hunt Analyser after the first real hunt.</b> It starts the hunt log.</span></label></li>
       </ul>
       <p class="small muted">Also tell me in words: is Ven Vil on the same account as Veritass, and what do you want from it first (fast exp, bosses, money)?</p>
     </div>
@@ -544,6 +543,7 @@ table.crt td.neu { color: var(--muted); }
         <li><span class="pill good">✓</span> Charms, major and minor (11:39–11:40)</li>
         <li><span class="pill good">✓</span> Quest Log down to Too Hot to Handle (11:41–11:42)</li>
         <li><span class="pill good">✓</span> Look texts of 27 items: weapons, armors, helmets, legs, boots, amulets, rings (12:04–12:07)</li>
+        <li><span class="pill good">✓</span> Gem Atelier, all 5 pages, and the Fragment Workshop (12:13)</li>
         <li><span class="pill good">✓</span> Gold from the Cyclopedia: 9,997,666 (11,795,153 at 02:13)</li>
       </ul>
     </div>
@@ -814,10 +814,45 @@ table.crt td.neu { color: var(--muted); }
 
 <section id="gems">
   <div class="sec-head">
-    <div class="eyebrow">Auction, Nov 15 · domains wait for the Gem Atelier screenshot</div>
+    <div class="eyebrow">Mods: auction, Nov 15 · domains and vessels: your Gem Atelier screenshots, Nov 24, 12:13</div>
     <h2>Gems</h2>
   </div>
-  <p class="lede">66 revealed Marksman gems: 12 greater, 22 regular and 32 lesser. No fragment progress for basic or supreme mods, and 0 fragments on Nov 24. Two greater gems are already in use: the Revelation Mastery Divine Empowerment one in "exp" and the Avatar of Light one in "boss" (see <a href="#wheel">Wheel</a>).</p>
+  <p class="lede">66 revealed Marksman gems: 12 greater, 22 regular and 32 lesser, none left to reveal. Most sit in the top-left domain (Gift of Life); the top-right (Divine Grenade) has no greater gem at all.</p>
+  <h3 class="tbl-h">By domain</h3>
+  <div class="scroll">
+    <table class="t-mid">
+      <thead><tr><th>Domain</th><th>Spell</th><th class="n">Greater</th><th class="n">Regular</th><th class="n">Lesser</th><th class="n">All</th></tr></thead>
+      <tbody>
+        <tr><td class="name" style="color:var(--tl)">Top-left</td><td>Gift of Life</td><td class="n">5</td><td class="n">8</td><td class="n">11</td><td class="n">24</td></tr>
+        <tr><td class="name" style="color:var(--tr)">Top-right</td><td>Divine Grenade</td><td class="n">0</td><td class="n">6</td><td class="n">3</td><td class="n">9</td></tr>
+        <tr><td class="name" style="color:var(--bl)">Bottom-left</td><td>Divine Empowerment</td><td class="n">3</td><td class="n">5</td><td class="n">8</td><td class="n">16</td></tr>
+        <tr><td class="name" style="color:var(--br)">Bottom-right</td><td>Avatar of Light</td><td class="n">4</td><td class="n">3</td><td class="n">10</td><td class="n">17</td></tr>
+        <tr class="cur"><td class="name">All</td><td></td><td class="n">12</td><td class="n">22</td><td class="n">32</td><td class="n">66</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3 class="tbl-h">In the vessels</h3>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="color:var(--bl)">exp <span class="tag">3 of 4 vessels filled</span></h3>
+      <ul class="small">
+        <li><b>Top-left, resonance I:</b> a lesser gem, HP +100 and energy +1%.</li>
+        <li><b>Bottom-left, resonance III:</b> greater gem 5, all three mods: Revelation Mastery Divine Empowerment +150, ice +2%, mana +150 and earth +1%.</li>
+        <li><b>Bottom-right, resonance I:</b> a greater gem with only one of its three mods on: mitigation multiplier 20%.</li>
+        <li><b>Top-right:</b> empty; "exp" has no resonance there.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--br)">boss <span class="tag">2 of 4 vessels filled</span></h3>
+      <ul class="small">
+        <li><b>Bottom-right, resonance III:</b> greater gem 7, all three mods: Revelation Mastery Avatar of Light +150, fire and ice +1%, HP +100 and energy +1%.</li>
+        <li><b>Top-left, resonance II:</b> greater gem 3, its two basic mods: physical +1%, capacity +200 and fire +1%. Its Salvation augment (+6% healing) stays off without resonance III.</li>
+        <li><b>Bottom-left and top-right:</b> empty; "boss" has no resonance there.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Each filled vessel adds +1 damage and healing: that's the +3 in "exp" and the +2 in "boss" on the Wheel screens. The gem assignments are worked out from the Vessels lists on your Wheel screenshots, which match these gems exactly.</p>
+  <p class="small muted">Gem Atelier costs on Nov 24: moving a gem to another domain 125k (lesser) or 250k (regular). Fragment Workshop: 69 mods; raising one grade (e.g. Dodge from +0.28% to +0.31%) costs 5,000k gp and 5 fragments, and you have 0 fragments.</p>
   <h3 class="tbl-h">Greater gems (supreme mod first)</h3>
   <div class="scroll">
     <table class="t-wide">
@@ -825,11 +860,11 @@ table.crt td.neu { color: var(--muted); }
       <tbody>
         <tr><td class="n">1</td><td class="name">Aug. Divine Caldera: +8% critical extra damage</td><td><span class="el death">death +1%</span></td><td>HP +200</td></tr>
         <tr><td class="n">2</td><td class="name">Aug. Strong Ethereal Spear: +8% base damage</td><td><span class="el fire">fire +1%</span> <span class="el earth">earth +1%</span></td><td>Mitigation multiplier 20%</td></tr>
-        <tr><td class="n">3</td><td class="name">Aug. Salvation: +6% base healing</td><td><span class="el phys">physical +1%</span></td><td>Capacity +200, <span class="el fire">fire +1%</span></td></tr>
+        <tr><td class="n">3</td><td class="name">Aug. Salvation: +6% base healing <span class="pill">in "boss", top-left, basic mods only</span></td><td><span class="el phys">physical +1%</span></td><td>Capacity +200, <span class="el fire">fire +1%</span></td></tr>
         <tr><td class="n">4</td><td class="name">Aug. Avatar of Light: −900 s cooldown</td><td><span class="el fire">fire +1%</span> <span class="el ice">ice +1%</span></td><td><span class="el ice">ice +2%</span></td></tr>
-        <tr><td class="n">5</td><td class="name">Revelation Mastery: Divine Empowerment +150</td><td><span class="el ice">ice +2%</span></td><td>Mana +150, <span class="el earth">earth +1%</span></td></tr>
+        <tr><td class="n">5</td><td class="name">Revelation Mastery: Divine Empowerment +150 <span class="pill good">in "exp", bottom-left</span></td><td><span class="el ice">ice +2%</span></td><td>Mana +150, <span class="el earth">earth +1%</span></td></tr>
         <tr><td class="n">6</td><td class="name">Revelation Mastery: Divine Empowerment +150</td><td><span class="el fire">fire +1%</span> <span class="el energy">energy +1%</span></td><td><span class="el ice">ice +2%</span></td></tr>
-        <tr><td class="n">7</td><td class="name">Revelation Mastery: Avatar of Light +150</td><td><span class="el fire">fire +1%</span> <span class="el ice">ice +1%</span></td><td>HP +100, <span class="el energy">energy +1%</span></td></tr>
+        <tr><td class="n">7</td><td class="name">Revelation Mastery: Avatar of Light +150 <span class="pill good">in "boss", bottom-right</span></td><td><span class="el fire">fire +1%</span> <span class="el ice">ice +1%</span></td><td>HP +100, <span class="el energy">energy +1%</span></td></tr>
         <tr><td class="n">8</td><td class="name">+2% critical extra damage</td><td><span class="el phys">physical +1%</span></td><td>Mana +150, <span class="el fire">fire +1%</span></td></tr>
         <tr><td class="n">9</td><td class="name">+2% life leech</td><td><span class="el death">death +1%</span></td><td>HP +100, <span class="el ice">ice +1%</span></td></tr>
         <tr><td class="n">10</td><td class="name">+0.8% mana leech</td><td><span class="el ice">ice +1%</span> <span class="el energy">energy +1%</span></td><td><span class="el fire">fire +2%</span></td></tr>
@@ -1172,6 +1207,7 @@ table.crt td.neu { color: var(--muted); }
     <li><span class="when">Nov 24, 02:18</span>Last login seen on tibia.com: level 1214, 783 achievement points, 46 titles.</li>
     <li><span class="when">Nov 24, 11:34</span>Cyclopedia: level 1214 at 90.6%, 9,997,666 gp, 6,506 free charm points, 47 quests finished.</li>
     <li><span class="when">Nov 24, 12:04</span>Looks at 27 items: Sanguine Crossbow, Moonsilver Trail Hood and Soulshell become the main set, with 9 items shared with Veritass.</li>
+    <li><span class="when">Nov 24, 12:13</span>Gem Atelier: 66 gems, 24 of them top-left; "exp" uses 3 vessels, "boss" 2.</li>
   </ol>
 </section>
 </div>
@@ -1279,7 +1315,7 @@ table.crt td.neu { color: var(--muted); }
   <ul class="sources small">
     <li><a href="https://www.tibia.com/charactertrade/?subtopic=currentcharactertrades&amp;page=details&amp;auctionid=2309490">tibia.com auction #2309490</a>, read Nov 24 (all lists opened in full)</li>
     <li><a href="https://www.tibia.com/community/?subtopic=characters&amp;name=Ven+Vil">tibia.com character page</a>, Nov 24</li>
-    <li>Your in-game screenshots, Nov 24: Wheel (02:13), Cyclopedia (11:34–11:35), Charms (11:39–11:40), Quest Log (11:41–11:42), the "exp" export code, and the Look texts of 27 items (12:04–12:07)</li>
+    <li>Your in-game screenshots, Nov 24: Wheel (02:13), Cyclopedia (11:34–11:35), Charms (11:39–11:40), Quest Log (11:41–11:42), the "exp" export code, and the Look texts of 27 items (12:04–12:07), and the Gem Atelier and Fragment Workshop (12:13)</li>
     <li><a href="https://adamgalon.github.io/veritass/">Veritass page</a>: imbuement and plasma prices (Refugia, Sep 14), blessing formula, quest notes</li>
     <li><a href="https://claude.ai/artifact/2MujM388wxtFJw1GXemfqM">Porównanie paladynów 1200</a>: price estimate and rare mounts and outfits</li>
   </ul>
