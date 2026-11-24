@@ -434,7 +434,7 @@ table.crt td.neu { color: var(--muted); }
     <li data-tab="now"><a class="ch" href="#tab-now">Character</a>
       <ul class="sub"><li><a href="#top">Character sheet</a></li><li><a href="#screens">Screenshots I need</a></li><li><a href="#next">Do next</a></li><li><a href="#prehunt">Before a hunt</a></li></ul></li>
     <li data-tab="build"><a class="ch" href="#tab-build">Gear &amp; build</a>
-      <ul class="sub"><li><a href="#gear">Equipment</a></li><li><a href="#imbue">Imbuements</a></li><li><a href="#wheel">Wheel</a></li><li><a href="#gems">Gems</a></li><li><a href="#systems">Blessings &amp; charms</a></li><li><a href="#prof">Proficiency</a></li></ul></li>
+      <ul class="sub"><li><a href="#gear">Equipment</a></li><li><a href="#imbue">Imbuements</a></li><li><a href="#wheel">Wheel</a></li><li><a href="#wheel-plan">Wheel proposals</a></li><li><a href="#gems">Gems</a></li><li><a href="#systems">Blessings &amp; charms</a></li><li><a href="#prof">Proficiency</a></li></ul></li>
     <li data-tab="hunt"><a class="ch" href="#tab-hunt">Hunting</a>
       <ul class="sub"><li><a href="#history">Where it hunted</a></li><li><a href="#open">Open to you</a></li><li><a href="#share">Sharing exp</a></li></ul></li>
     <li data-tab="progress"><a class="ch" href="#tab-progress">Progress</a>
@@ -518,20 +518,19 @@ table.crt td.neu { color: var(--muted); }
       <ul>
         <li><label><input type="checkbox" data-sc="combat"><span><b>1. Combat Stats again, outside PZ, in the main set.</b> The 11:35 screens were in the depot without a weapon, so attack value (253) and crit (5% / 10%) don't show your real set.</span></label></li>
         <li><label><input type="checkbox" data-sc="quiver"><span><b>2. Look on the quiver and the extra-slot item</b>, and which ammunition is in the quiver (800 at 11:34).</span></label></li>
-        <li><label><input type="checkbox" data-sc="bosscode"><span><b>3. Export code of the "boss" preset</b> pasted as text, like you did for "exp".</span></label></li>
-        <li><label><input type="checkbox" data-sc="depot"><span><b>4. Depot, Stash and Inbox.</b> Gear and supplies kept there.</span></label></li>
-        <li><label><input type="checkbox" data-sc="qend"><span><b>5. The end of the Quest Log</b>, scrolled below Too Hot to Handle.</span></label></li>
+        <li><label><input type="checkbox" data-sc="depot"><span><b>3. Depot, Stash and Inbox.</b> Gear and supplies kept there.</span></label></li>
+        <li><label><input type="checkbox" data-sc="qend"><span><b>4. The end of the Quest Log</b>, scrolled below Too Hot to Handle.</span></label></li>
       </ul>
     </div>
     <div class="card">
       <h3>Good to have</h3>
       <ul>
-        <li><label><input type="checkbox" data-sc="bless"><span><b>6. Blessings</b> after the transfer (7/7 at the auction).</span></label></li>
-        <li><label><input type="checkbox" data-sc="prey"><span><b>7. Prey, Hunting Tasks and Bounty Talisman.</b></span></label></li>
-        <li><label><input type="checkbox" data-sc="boss"><span><b>8. Bosstiary boss slots.</b></span></label></li>
-        <li><label><input type="checkbox" data-sc="bars"><span><b>9. Action bars</b> with spells and potions, for the rotation.</span></label></li>
-        <li><label><input type="checkbox" data-sc="profw"><span><b>10. Proficiency window</b> for the bow or crossbow you use.</span></label></li>
-        <li><label><input type="checkbox" data-sc="hunt"><span><b>11. Hunt Analyser after the first real hunt.</b> It starts the hunt log.</span></label></li>
+        <li><label><input type="checkbox" data-sc="bless"><span><b>5. Blessings</b> after the transfer (7/7 at the auction).</span></label></li>
+        <li><label><input type="checkbox" data-sc="prey"><span><b>6. Prey, Hunting Tasks and Bounty Talisman.</b></span></label></li>
+        <li><label><input type="checkbox" data-sc="boss"><span><b>7. Bosstiary boss slots.</b></span></label></li>
+        <li><label><input type="checkbox" data-sc="bars"><span><b>8. Action bars</b> with spells and potions, for the rotation.</span></label></li>
+        <li><label><input type="checkbox" data-sc="profw"><span><b>9. Proficiency window</b> for the bow or crossbow you use.</span></label></li>
+        <li><label><input type="checkbox" data-sc="hunt"><span><b>10. Hunt Analyser after the first real hunt.</b> It starts the hunt log.</span></label></li>
       </ul>
       <p class="small muted">Also tell me in words: is Ven Vil on the same account as Veritass, and what do you want from it first (fast exp, bosses, money)?</p>
     </div>
@@ -544,6 +543,7 @@ table.crt td.neu { color: var(--muted); }
         <li><span class="pill good">✓</span> Quest Log down to Too Hot to Handle (11:41–11:42)</li>
         <li><span class="pill good">✓</span> Look texts of 27 items: weapons, armors, helmets, legs, boots, amulets, rings (12:04–12:07)</li>
         <li><span class="pill good">✓</span> Gem Atelier, all 5 pages, and the Fragment Workshop (12:13)</li>
+        <li><span class="pill good">✓</span> "boss" export code: found in your client files, matches the screenshot</li>
         <li><span class="pill good">✓</span> Gold from the Cyclopedia: 9,997,666 (11,795,153 at 02:13)</li>
       </ul>
     </div>
@@ -560,6 +560,7 @@ table.crt td.neu { color: var(--muted); }
     <li class="urgent"><div><p><b>Hunt in the main set:</b> Sanguine Crossbow, Moonsilver Trail Hood, Soulshell, plus the Falcon Greaves and Winged Boots you share with Veritass, and the Flamingo amulet and Alicorn ring while they last. Distance +22 from items. At 11:34 you stood in the depot without a weapon or helmet and in the Unerring, whose imbuements have about 1.5 h left. See <a href="#gear">Equipment</a>.</p></div></li>
     <li><div><p><b>Shared legs and boots.</b> Ven Vil and Veritass share the Falcon Greaves and Winged Boots, so only one of them can wear them at a time. Whoever hunts without them loses distance +4, physical 7%, ice 7% and earth 7%. If you want both hunting the same day, tell me a budget and I'll add a buying plan for a second pair.</p></div></li>
     <li><div><p><b>Give the Soulpiercer a Vampirism</b> if you'll use it for death spawns; its third slot is empty.</p></div></li>
+    <li><div><p><b>Re-spec "exp" in a temple.</b> The proposed layout swaps the Divine Barrage augment and dead mitigation points for Ethereal Barrage augment I, Strong Ethereal Spear augment I and life leech +0.75%, keeping Divine Empowerment stage 3. Import code and the "boss" tweak: <a href="#wheel-plan">Wheel proposals</a>.</p></div></li>
     <li><div><p><b>The Way of the Monk is still open.</b> It gave Veritass +10 Wheel points. Ven Vil has 1,196 points, all placed in "exp".</p></div></li>
     <li><div><p><b>Eat before hunting.</b> Food showed 00:16 at 11:34. Stamina is full (42:00), so you get 150% exp right now.</p></div></li>
     <li><div><p><b>Proficiency already pays off.</b> Your Sanguine Crossbow is at 7 of 7, so it has every perk. The Soulbleeder (4 of 7) and Soulpiercer (none) would need levelling before they match it. See <a href="#prof">Proficiency</a>.</p></div></li>
@@ -806,10 +807,82 @@ table.crt td.neu { color: var(--muted); }
         <dt>Vessels (gems)</dt><dd>Damage and healing +2 · Revelation Mastery Avatar of Light +150 · HP +100 · capacity +200 · <span class="el energy">energy +1%</span> <span class="el fire">fire +2%</span> <span class="el ice">ice +1%</span> <span class="el phys">physical +1%</span> (list cut off on the screen)</dd>
         <dt>Revelation</dt><dd>Avatar of Light stage 3, Gift of Life stage 1; Divine Empowerment and Divine Grenade locked</dd>
       </dl>
-      <p class="small muted">Export code: send it like the "exp" one and I'll add the planner links.</p>
+      <div class="code-row"><code class="c">P0Y2BIYWBgEEnxZgABIwYIJQkS9GaYBiRTpp3QYVD7DwbqXOoA</code><button class="inc" type="button" data-w="P0Y2BIYWBgEEnxZgABIwYIJQkS9GaYBiRTpp3QYVD7DwbqXOoA">Copy</button> <a class="small" href="https://www.tibia.com/community/?subtopic=wheelofdestinyplanner&amp;code=P0Y2BIYWBgEEnxZgABIwYIJQkS9GaYBiRTpp3QYVD7DwbqXOoA">tibia.com</a> · <a class="small" href="https://tibiapal.com/wheel-planner?subtopic=wheelofdestinyplanner&amp;code=P0Y2BIYWBgEEnxZgABIwYIJQkS9GaYBiRTpp3QYVD7DwbqXOoA">TibiaPal</a></div>
+      <p class="small muted">From your client's preset file of Nov 22; the planner gives exactly the perks on your Nov 24 screenshot.</p>
     </div>
   </div>
   <p class="small muted">"exp" trades 900 mana for 100 HP and 18.8 points of mitigation multiplier compared with "boss", and swaps Avatar of Light for Divine Empowerment. Gold and fragments under the wheel at 02:13: 11,795,153 gp, 0 lesser and 0 greater fragments.</p>
+
+  <h3 class="tbl-h" id="wheel-plan">Proposals: more out of each preset <span class="tag">built and checked in the tibia.com planner, Nov 24</span></h3>
+  <div class="note"><b>The rules that decide it</b> (from the planner's own help texts): a Revelation perk reaches stage 1 at 250 points in its domain, stage 2 at 500 and stage 3 at 1,000, and a gem's Revelation Mastery counts toward that. Your two Revelation Mastery gems are +150 each, so 850 points in a domain plus the gem make stage 3. A slice's conviction perk only works when the slice is full. Your damage comes from distance (165 in the main set before Sharpshooter) far more than from magic level (39 + 4 holy), so the Ethereal and Strong Ethereal Spear augments are worth more to you than the Divine Barrage one, and mitigation multiplier is close to worthless: your base mitigation is 1.3%, so +27.8% of it is about 0.4% less damage.</div>
+  <div class="grid2">
+    <div class="card">
+      <h3 style="color:var(--bl)">exp → better exp <span class="pill good">clear gain</span></h3>
+      <ul class="small">
+        <li><b>Out:</b> Divine Barrage augment (top-left 3rd ring, the slice by the left edge, down to 46 HP points), the half-filled capacity slice in the bottom-left, and the bottom-right corner (its gem only gave mitigation).</li>
+        <li><b>In:</b> <b>Ethereal Barrage augment I</b> (+10% life leech on your main area spell), <b>Strong Ethereal Spear augment I</b> (−2 s cooldown), <b>life leech +0.75%</b>, mana +375.</li>
+        <li><b>Kept:</b> Divine Empowerment stage 3 (850 + 150 from gem 5), Gift of Life stage 1, distance +2, Divine Caldera I, Divine Dazzle I, mana leech +0.25%, both matching gems (+3 damage and healing).</li>
+        <li><b>Cost:</b> capacity −200, HP −8, mitigation multiplier −5.3 points.</li>
+      </ul>
+      <div class="code-row"><code class="c">P0Y2AAgxRvIKHnbQRmGsFFTkxLAZLq_0FAmVVTjlMJAA</code><button class="inc" type="button" data-w="P0Y2AAgxRvIKHnbQRmGsFFTkxLAZLq_0FAmVVTjlMJAA">Copy</button> <a class="small" href="https://www.tibia.com/community/?subtopic=wheelofdestinyplanner&amp;code=P0Y2AAgxRvIKHnbQRmGsFFTkxLAZLq_0FAmVVTjlMJAA">tibia.com</a> · <a class="small" href="https://tibiapal.com/wheel-planner?subtopic=wheelofdestinyplanner&amp;code=P0Y2AAgxRvIKHnbQRmGsFFTkxLAZLq_0FAmVVTjlMJAA">TibiaPal</a></div>
+      <p class="small muted">Totals: HP +992, mana +1,200, capacity +800, mitigation 22.5%. Next points: the bottom-left 4th-ring capacity slice (150 points, life leech +0.75%).</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--br)">boss → same perks, nothing wasted <span class="pill">small gain</span></h3>
+      <ul class="small">
+        <li><b>Already good:</b> Avatar of Light stage 3, Strong Ethereal Spear II (+380% base damage), Ballistic Mastery (+10% critical extra damage with a crossbow), Gift of Life stage 1, life leech +1.5%. I found no layout that adds damage without losing more.</li>
+        <li><b>Move:</b> the 20 mitigation points in the top-left 4th ring and the 1 unspent point go to the bottom-right 2nd-ring slice by the right edge (now 46 of 75). 29 more points there give <b>+1 distance</b>; The Way of the Monk gives 10 of them.</li>
+        <li><b>Gem:</b> swap the Salvation greater gem in the top-left vessel for a regular top-left gem. Resonance II matches regular gems: +1 damage and healing and both its mods (for example the one with HP +100, energy +1%, fire +1%, earth +1%). The Salvation augment never turns on at resonance II anyway.</li>
+      </ul>
+      <div class="code-row"><code class="c">P0Y2BIYQCCFG8QyWDEAKH0QILeDNNAMtNO6DCo_QcDdS51AA</code><button class="inc" type="button" data-w="P0Y2BIYQCCFG8QyWDEAKH0QILeDNNAMtNO6DCo_QcDdS51AA">Copy</button> <a class="small" href="https://www.tibia.com/community/?subtopic=wheelofdestinyplanner&amp;code=P0Y2BIYQCCFG8QyWDEAKH0QILeDNNAMtNO6DCo_QcDdS51AA">tibia.com</a> · <a class="small" href="https://tibiapal.com/wheel-planner?subtopic=wheelofdestinyplanner&amp;code=P0Y2BIYQCCFG8QyWDEAKH0QILeDNNAMtNO6DCo_QcDdS51AA">TibiaPal</a></div>
+      <p class="small muted">Option for +1 distance right now: <code class="c">P0Y2DQYwCCFG8Q6W3EAAZGkikgHsM0kMy0EzoMav_BQJ1LHQA</code> <button class="inc" type="button" data-w="P0Y2DQYwCCFG8Q6W3EAAZGkikgHsM0kMy0EzoMav_BQJ1LHQA">Copy</button>. It costs 108 HP and drops the top-left to resonance I (then use a lesser gem there). Close to even; I'd wait for the 29 points instead.</p>
+    </div>
+  </div>
+  <details class="fold-tbl">
+  <summary>Slice by slice: now and proposed</summary>
+  <div class="scroll">
+    <table class="t-wide">
+      <thead><tr><th>Slice</th><th>Dedication · conviction</th><th class="n">exp now</th><th class="n">exp proposed</th><th class="n">boss now</th><th class="n">boss proposed</th></tr></thead>
+      <tbody>
+        <tr class="band"><td colspan="6">Top-left · Gift of Life</td></tr>
+        <tr><td class="name">Inner ring</td><td>Capacity · Vessel Resonance</td><td class="n">50</td><td class="n">50</td><td class="n">50</td><td class="n">50</td></tr>
+        <tr><td class="name">2nd ring, by the top edge</td><td>Mana · life leech +0.75%</td><td class="n">0</td><td class="n"><b>75</b></td><td class="n">75</td><td class="n">75</td></tr>
+        <tr><td class="name">2nd ring, by the left edge</td><td>Mana · distance +1</td><td class="n">75</td><td class="n">75</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td class="name">3rd ring, by the top edge</td><td>HP · Vessel Resonance</td><td class="n">0</td><td class="n">0</td><td class="n">100</td><td class="n">100</td></tr>
+        <tr><td class="name">3rd ring, middle</td><td>HP · Strong Ethereal Spear</td><td class="n">0</td><td class="n"><b>100</b></td><td class="n">100</td><td class="n">100</td></tr>
+        <tr><td class="name">3rd ring, by the left edge</td><td>HP · Divine Barrage</td><td class="n">100</td><td class="n"><b>46</b></td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td class="name">4th ring, by the left edge</td><td>Mitigation · Vessel Resonance</td><td class="n">26</td><td class="n"><b>0</b></td><td class="n">20</td><td class="n"><b>0</b></td></tr>
+        <tr class="band"><td colspan="6">Bottom-left · Divine Empowerment</td></tr>
+        <tr><td class="name">Inner ring</td><td>Mana · Ethereal Barrage</td><td class="n">0</td><td class="n"><b>50</b></td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td class="name">2nd ring, both slices</td><td>HP · mana leech, Vessel Resonance</td><td class="n">150</td><td class="n">150</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td class="name">3rd ring, all three</td><td>Mitigation · Vessel Resonance, Divine Dazzle, distance +1</td><td class="n">300</td><td class="n">300</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td class="name">4th ring, by the left edge</td><td>Capacity · life leech +0.75%</td><td class="n">50</td><td class="n"><b>0</b></td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td class="name">4th ring, by the bottom edge</td><td>Capacity · Vessel Resonance</td><td class="n">150</td><td class="n">150</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr><td class="name">Outer ring</td><td>HP and mana · Divine Caldera</td><td class="n">200</td><td class="n">200</td><td class="n">0</td><td class="n">0</td></tr>
+        <tr class="band"><td colspan="6">Bottom-right · Avatar of Light</td></tr>
+        <tr><td class="name">Inner ring</td><td>HP · Vessel Resonance</td><td class="n">50</td><td class="n"><b>0</b></td><td class="n">50</td><td class="n">50</td></tr>
+        <tr><td class="name">2nd ring, by the bottom edge</td><td>Mitigation · mana leech +0.25%</td><td class="n">0</td><td class="n">0</td><td class="n">75</td><td class="n">75</td></tr>
+        <tr><td class="name">2nd ring, by the right edge</td><td>Mitigation · distance +1</td><td class="n">45</td><td class="n"><b>0</b></td><td class="n">25</td><td class="n"><b>46</b></td></tr>
+        <tr><td class="name">3rd ring, by the bottom edge</td><td>Capacity · Vessel Resonance</td><td class="n">0</td><td class="n">0</td><td class="n">100</td><td class="n">100</td></tr>
+        <tr><td class="name">3rd ring, by the right edge</td><td>Capacity · Strong Ethereal Spear</td><td class="n">0</td><td class="n">0</td><td class="n">100</td><td class="n">100</td></tr>
+        <tr><td class="name">4th ring, both slices</td><td>Mana · life leech +0.75%, Vessel Resonance</td><td class="n">0</td><td class="n">0</td><td class="n">300</td><td class="n">300</td></tr>
+        <tr><td class="name">Outer ring</td><td>HP and mana · Ballistic Mastery</td><td class="n">0</td><td class="n">0</td><td class="n">200</td><td class="n">200</td></tr>
+        <tr class="cur"><td class="name">Total</td><td></td><td class="n">1,196</td><td class="n">1,196</td><td class="n">1,195</td><td class="n">1,196</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted">The top-right (Divine Grenade) stays empty in all four.</p>
+  </details>
+  <div class="card">
+    <h3>How to switch</h3>
+    <ol class="small">
+      <li>Go to a temple: changing points is free there.</li>
+      <li>Wheel of Destiny → Manage Presets → <b>New</b>, name it ("exp2"), then <b>Import</b> and paste the code. Your old preset stays as a backup.</li>
+      <li>Check the right-hand panel against the totals above, then <b>Apply</b>.</li>
+      <li>The codes keep the gems your presets use now. For "boss", swap the top-left gem in the Gem Atelier afterwards.</li>
+    </ol>
+    <p class="small muted">The planner shows gem mods at their top grade (Revelation Mastery +225); yours are +150 in game. The stage 3 maths above uses +150. Coming with the Winter Update (no date yet): Vessel Resonance is being replaced, so these layouts will need another look when it goes live.</p>
+  </div>
 </section>
 
 <section id="gems">
@@ -838,7 +911,7 @@ table.crt td.neu { color: var(--muted); }
       <ul class="small">
         <li><b>Top-left, resonance I:</b> a lesser gem, HP +100 and energy +1%.</li>
         <li><b>Bottom-left, resonance III:</b> greater gem 5, all three mods: Revelation Mastery Divine Empowerment +150, ice +2%, mana +150 and earth +1%.</li>
-        <li><b>Bottom-right, resonance I:</b> a greater gem with only one of its three mods on: mitigation multiplier 20%.</li>
+        <li><b>Bottom-right, resonance I:</b> greater gem 2 (Aug. Strong Ethereal Spear) with only one of its three mods on: mitigation multiplier 20%.</li>
         <li><b>Top-right:</b> empty; "exp" has no resonance there.</li>
       </ul>
     </div>
@@ -851,7 +924,7 @@ table.crt td.neu { color: var(--muted); }
       </ul>
     </div>
   </div>
-  <p class="small">Each filled vessel adds +1 damage and healing: that's the +3 in "exp" and the +2 in "boss" on the Wheel screens. The gem assignments are worked out from the Vessels lists on your Wheel screenshots, which match these gems exactly.</p>
+  <p class="small"><b>Damage and healing from vessels:</b> +1 when the resonance matches the gem (I for lesser, II for regular, III for greater), +2 for a matching greater gem, nothing otherwise. "exp": top-left lesser at I (+1) and bottom-left greater at III (+2) = +3. "boss": bottom-right greater at III (+2), the top-left greater at II doesn't match = +2. The gems in each vessel come from your preset codes, read in the tibia.com planner.</p>
   <p class="small muted">Gem Atelier costs on Nov 24: moving a gem to another domain 125k (lesser) or 250k (regular). Fragment Workshop: 69 mods; raising one grade (e.g. Dodge from +0.28% to +0.31%) costs 5,000k gp and 5 fragments, and you have 0 fragments.</p>
   <h3 class="tbl-h">Greater gems (supreme mod first)</h3>
   <div class="scroll">
