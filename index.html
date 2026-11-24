@@ -815,6 +815,21 @@ table.crt td.neu { color: var(--muted); }
 
   <h3 class="tbl-h" id="wheel-plan">Proposals: more out of each preset <span class="tag">built and checked in the tibia.com planner, Nov 24</span></h3>
   <div class="note"><b>The rules that decide it</b> (from the planner's own help texts): a Revelation perk reaches stage 1 at 250 points in its domain, stage 2 at 500 and stage 3 at 1,000, and a gem's Revelation Mastery counts toward that. Your two Revelation Mastery gems are +150 each, so 850 points in a domain plus the gem make stage 3. A slice's conviction perk only works when the slice is full. Your damage comes from distance (165 in the main set before Sharpshooter) far more than from magic level (39 + 4 holy), so the Ethereal and Strong Ethereal Spear augments are worth more to you than the Divine Barrage one, and mitigation multiplier is close to worthless: your base mitigation is 1.3%, so +27.8% of it is about 0.4% less damage.</div>
+  <div class="tabs" id="wheelTabs" role="tablist" aria-label="Wheel presets">
+    <button class="tab" role="tab" type="button" data-p="expNow" aria-selected="false"><span class="dot" style="background:var(--bl)"></span>exp · now</button>
+    <button class="tab" role="tab" type="button" data-p="expNew" aria-selected="true"><span class="dot" style="background:var(--bl)"></span>exp · proposed <span class="rec">re-spec</span></button>
+    <button class="tab" role="tab" type="button" data-p="bossNow" aria-selected="false"><span class="dot" style="background:var(--br)"></span>boss · now</button>
+    <button class="tab" role="tab" type="button" data-p="bossNew" aria-selected="false"><span class="dot" style="background:var(--br)"></span>boss · proposed</button>
+  </div>
+  <div class="wheel-main">
+    <div class="wheel-box">
+      <svg class="wheel" id="wheelSvg" viewBox="-300 -300 600 600" role="img" aria-label="Paladin Wheel of Destiny with the selected Ven Vil preset"></svg>
+      <div class="legend"><span>Solid slice: full, perk on · pale with a number: partly filled, only the dedication bonus · gold dashed edge: changes between now and proposed</span></div>
+      <div class="legend"><span><b>VR</b> Vessel Resonance</span><span><b>+1</b> distance +1</span><span><b>LL</b> life leech +0.75%</span><span><b>ML</b> mana leech +0.25%</span><span><b>DB</b> Divine Barrage</span><span><b>EB</b> Ethereal Barrage</span><span><b>DC</b> Divine Caldera</span><span><b>DZ</b> Divine Dazzle</span><span><b>SES</b> Strong Ethereal Spear</span><span><b>PT</b> Positional Tactics</span><span><b>BM</b> Ballistic Mastery</span></div>
+      <div class="detail" id="wDetail" aria-live="polite"></div>
+    </div>
+    <div class="wsteps" id="wSteps"></div>
+  </div>
   <div class="grid2">
     <div class="card">
       <h3 style="color:var(--bl)">exp → better exp <span class="pill good">clear gain</span></h3>
@@ -1589,6 +1604,151 @@ table.crt td.neu { color: var(--muted); }
   qres.addEventListener("click", function (e) { var b = e.target.closest("button[data-go]"); if (!b) return; qres.hidden = true; go(b.getAttribute("data-go"), true); });
   document.addEventListener("click", function (e) { if (!e.target.closest(".search")) qres.hidden = true; });
   q.addEventListener("focus", function () { if (q.value.trim().length >= 2) search(); });
+})();
+</script>
+<script>
+// Wheel of Destiny picture: slice geometry and perks as on the Veritass page (same as the tibia.com planner); allocations read from the planner on Nov 24.
+(function () {
+  var svg = document.getElementById("wheelSvg"); if (!svg) return;
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function n(v) { return Math.round(v).toLocaleString("en-US"); }
+  var RINGS = { 1: [22, 60], 2: [60, 108], 3: [108, 158], 4: [158, 208], 5: [208, 256] };
+  var DOM = { TR: { name: "Divine Grenade", color: "var(--tr)", where: "Top-right" }, TL: { name: "Gift of Life", color: "var(--tl)", where: "Top-left" }, BL: { name: "Divine Empowerment", color: "var(--bl)", where: "Bottom-left" }, BR: { name: "Avatar of Light", color: "var(--br)", where: "Bottom-right" } };
+  var PERK = {
+    VR: "Vessel Resonance: turns on one more gem mod in this domain", "+1": "Distance +1", LL: "Life leech +0.75%", ML: "Mana leech +0.25%",
+    DB: "Divine Barrage augment: +8% base damage, +12% with both slices", EB: "Ethereal Barrage augment: +10% life leech on it, then +10% critical hit chance",
+    DC: "Divine Caldera augment: −20 mana, then +10% base damage", DZ: "Divine Dazzle augment: +2 targets, then longer and −8 s cooldown",
+    SES: "Strong Ethereal Spear augment: −2 s cooldown, then +380% base damage",
+    PT: "Positional Tactics: distance +3 while no monster is next to you, otherwise holy and healing magic level +3",
+    BM: "Ballistic Mastery: +10% critical extra damage with a crossbow (+4% physical and holy pierce with a bow)"
+  };
+  var AUG = { DB: "Divine Barrage", EB: "Ethereal Barrage", DC: "Divine Caldera", DZ: "Divine Dazzle", SES: "Strong Ethereal Spear" };
+  // [id, domain, ring, angle from, angle to (deg, counter-clockwise from east), points, dedication, perk]
+  var S = [
+    ["TR1","TR",1,0,90,50,"Mitigation","DC"],["TR2a","TR",2,0,45,75,"Capacity","LL"],["TR2b","TR",2,45,90,75,"Capacity","VR"],
+    ["TR3a","TR",3,0,30,100,"Mana","VR"],["TR3b","TR",3,30,60,100,"Mana","DZ"],["TR3c","TR",3,60,90,100,"Mana","+1"],
+    ["TR4a","TR",4,12,45,150,"Hit Points","ML"],["TR4b","TR",4,45,78,150,"Hit Points","VR"],["TR5","TR",5,12,78,200,"Hit Points + Mana","EB"],
+    ["TL1","TL",1,90,180,50,"Capacity","VR"],["TL2a","TL",2,90,135,75,"Mana","LL"],["TL2b","TL",2,135,180,75,"Mana","+1"],
+    ["TL3a","TL",3,90,120,100,"Hit Points","VR"],["TL3b","TL",3,120,150,100,"Hit Points","SES"],["TL3c","TL",3,150,180,100,"Hit Points","DB"],
+    ["TL4a","TL",4,102,135,150,"Mitigation","ML"],["TL4b","TL",4,135,168,150,"Mitigation","VR"],["TL5","TL",5,102,168,200,"Hit Points + Mana","PT"],
+    ["BL1","BL",1,180,270,50,"Mana","EB"],["BL2a","BL",2,180,225,75,"Hit Points","ML"],["BL2b","BL",2,225,270,75,"Hit Points","VR"],
+    ["BL3a","BL",3,180,210,100,"Mitigation","VR"],["BL3b","BL",3,210,240,100,"Mitigation","DZ"],["BL3c","BL",3,240,270,100,"Mitigation","+1"],
+    ["BL4a","BL",4,192,225,150,"Capacity","LL"],["BL4b","BL",4,225,258,150,"Capacity","VR"],["BL5","BL",5,192,258,200,"Hit Points + Mana","DC"],
+    ["BR1","BR",1,270,360,50,"Hit Points","VR"],["BR2a","BR",2,270,315,75,"Mitigation","ML"],["BR2b","BR",2,315,360,75,"Mitigation","+1"],
+    ["BR3a","BR",3,270,300,100,"Capacity","VR"],["BR3b","BR",3,300,330,100,"Capacity","DB"],["BR3c","BR",3,330,360,100,"Capacity","SES"],
+    ["BR4a","BR",4,282,315,150,"Mana","LL"],["BR4b","BR",4,315,348,150,"Mana","VR"],["BR5","BR",5,282,348,200,"Hit Points + Mana","BM"]
+  ];
+  var BY = {}; S.forEach(function (s) { BY[s[0]] = s; });
+  var P = {
+    expNow: { label: "exp · now", pair: "expNew", rm: { BL: 150 }, color: "var(--bl)",
+      a: { TL1: 50, TL2b: 75, TL3c: 100, TL4b: 26, BL2a: 75, BL2b: 75, BL3a: 100, BL3b: 100, BL3c: 100, BL4a: 50, BL4b: 150, BL5: 200, BR1: 50, BR2b: 45 },
+      gems: ["Top-left, resonance I: lesser gem, HP +100, energy +1% (matches, +1 damage and healing)", "Bottom-left, resonance III: greater gem 5, Revelation Mastery Divine Empowerment +150, ice +2%, mana +150, earth +1% (matches, +2)", "Bottom-right, resonance I: greater gem 2, only mitigation multiplier 20% (no match)"],
+      code: "P0Y2AAASkwmeJtBCYZjHQZjIAUA8OJaSlAUv0_CCizaspxKgEA", check: [1000, 825, 1000, "27.82"] },
+    expNew: { label: "exp · proposed", pair: "expNow", rm: { BL: 150 }, color: "var(--bl)",
+      a: { TL1: 50, TL2a: 75, TL2b: 75, TL3b: 100, TL3c: 46, BL1: 50, BL2a: 75, BL2b: 75, BL3a: 100, BL3b: 100, BL3c: 100, BL4b: 150, BL5: 200 },
+      gems: ["Top-left, resonance I: lesser gem, HP +100, energy +1% (matches, +1)", "Bottom-left, resonance III: greater gem 5, all three mods (matches, +2)", "Bottom-right: no resonance, so gem 2 sits idle (it only gave mitigation)"],
+      code: "P0Y2AAgxRvIKHnbQRmGsFFTkxLAZLq_0FAmVVTjlMJAA", check: [992, 1200, 800, "22.50"] },
+    bossNow: { label: "boss · now", pair: "bossNew", rm: { BR: 150 }, color: "var(--br)",
+      a: { TL1: 50, TL2a: 75, TL3a: 100, TL3b: 100, TL4b: 20, BR1: 50, BR2a: 75, BR2b: 25, BR3a: 100, BR3c: 100, BR4a: 150, BR4b: 150, BR5: 200 },
+      gems: ["Bottom-right, resonance III: greater gem 7, Revelation Mastery Avatar of Light +150, fire and ice +1%, HP +100, energy +1% (matches, +2)", "Top-left, resonance II: greater gem 3, capacity +200, fire +1%, physical +1%; Salvation augment off (no match)"],
+      code: "P0Y2BIYWBgEEnxZgABIwYIJQkS9GaYBiRTpp3QYVD7DwbqXOoA", check: [900, 1725, 1000, "9.00"] },
+    bossNew: { label: "boss · proposed", pair: "bossNow", rm: { BR: 150 }, color: "var(--br)",
+      a: { TL1: 50, TL2a: 75, TL3a: 100, TL3b: 100, BR1: 50, BR2a: 75, BR2b: 46, BR3a: 100, BR3c: 100, BR4a: 150, BR4b: 150, BR5: 200 },
+      gems: ["Bottom-right, resonance III: greater gem 7, all three mods (matches, +2)", "Top-left, resonance II: swap gem 3 for a regular top-left gem: +1 damage and healing and both its mods"],
+      code: "P0Y2BIYQCCFG8QyWDEAKH0QILeDNNAMtNO6DCo_QcDdS51AA", check: [900, 1725, 1000, "9.07"] }
+  };
+
+  // ---------- what a layout gives ----------
+  var ROMAN = ["", "I", "II", "III"];
+  function sum(pr) {
+    var a = pr.a, t = { pts: 0, hp: 0, mana: 0, cap: 0, mit: 0, dom: { TL: 0, TR: 0, BL: 0, BR: 0 }, conv: {}, vr: { TL: 0, TR: 0, BL: 0, BR: 0 } };
+    S.forEach(function (s) {
+      var p = a[s[0]] || 0; if (!p) return;
+      t.pts += p; t.dom[s[1]] += p;
+      if (s[6] === "Hit Points") t.hp += 2 * p; else if (s[6] === "Mana") t.mana += 3 * p; else if (s[6] === "Capacity") t.cap += 4 * p; else if (s[6] === "Mitigation") t.mit += p; else { t.hp += 2 * p; t.mana += 3 * p; }
+      if (p === s[5]) { if (s[7] === "VR") t.vr[s[1]]++; else t.conv[s[7]] = (t.conv[s[7]] || 0) + 1; }
+    });
+    t.mitTxt = (Math.floor(t.mit * 0.075 * 100 + 1e-9) / 100).toFixed(2);
+    t.stage = {}; t.dmg = 0;
+    Object.keys(t.dom).forEach(function (d) { var v = t.dom[d] + (pr.rm[d] || 0); t.stage[d] = v >= 1000 ? 3 : v >= 500 ? 2 : v >= 250 ? 1 : 0; t.dmg += [0, 4, 9, 20][t.stage[d]]; });
+    return t;
+  }
+  Object.keys(P).forEach(function (k) { var t = sum(P[k]), c = P[k].check; console.assert(t.hp === c[0] && t.mana === c[1] && t.cap === c[2] && t.mitTxt === c[3], "wheel totals " + k); });
+  console.assert(sum(P.expNow).pts === 1196 && sum(P.expNew).pts === 1196 && sum(P.bossNow).pts === 1195 && sum(P.bossNew).pts === 1196, "wheel points");
+  console.assert(sum(P.expNew).stage.BL === 3 && sum(P.bossNew).stage.BR === 3 && sum(P.expNew).stage.TL === 1 && sum(P.bossNew).stage.TL === 1, "wheel stages");
+  function convList(t) {
+    var o = [];
+    if (t.conv["+1"]) o.push("Distance +" + t.conv["+1"]);
+    Object.keys(AUG).forEach(function (k) { if (t.conv[k]) o.push(AUG[k] + " augment " + ROMAN[t.conv[k]]); });
+    if (t.conv.LL) o.push("Life leech +" + (0.75 * t.conv.LL).toFixed(2).replace(/0$/, "") + "%");
+    if (t.conv.ML) o.push("Mana leech +" + (0.25 * t.conv.ML).toFixed(2).replace(/0$/, "") + "%");
+    if (t.conv.BM) o.push("Ballistic Mastery"); if (t.conv.PT) o.push("Positional Tactics");
+    Object.keys(t.vr).forEach(function (d) { if (t.vr[d]) o.push("Vessel Resonance " + DOM[d].where.toLowerCase() + " " + ROMAN[t.vr[d]]); });
+    return o;
+  }
+
+  // ---------- drawing ----------
+  var NS = "http://www.w3.org/2000/svg";
+  function pt(r, a) { var t = a * Math.PI / 180; return [r * Math.cos(t), -r * Math.sin(t)]; }
+  function arc(a0, a1, r0, r1) { var p0 = pt(r1, a0), p1 = pt(r1, a1), p2 = pt(r0, a1), p3 = pt(r0, a0), f = function (p) { return p[0].toFixed(2) + " " + p[1].toFixed(2); }; return "M" + f(p0) + " A" + r1 + " " + r1 + " 0 0 0 " + f(p1) + " L" + f(p2) + " A" + r0 + " " + r0 + " 0 0 1 " + f(p3) + " Z"; }
+  function mk(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); (parent || svg).appendChild(e); return e; }
+  var ringNames = { 1: "inner ring", 2: "2nd ring", 3: "3rd ring", 4: "4th ring", 5: "outer ring" };
+  var CORNER = { TL: ["Top-left", "top", "left"], BL: ["Bottom-left", "left", "bottom"], BR: ["Bottom-right", "bottom", "right"], TR: ["Top-right", "right", "top"] };
+  function posName(id) { var s = BY[id], c = CORNER[s[1]], k = id.slice(-1), ring = s[2], w = ""; if (ring === 2 || ring === 4) w = ", slice by the " + (k === "a" ? c[1] : c[2]) + " edge"; if (ring === 3) w = k === "a" ? ", slice by the " + c[1] + " edge" : k === "b" ? ", middle slice" : ", slice by the " + c[2] + " edge"; return c[0] + ", " + ringNames[ring] + w; }
+  var slices = {}, gS = mk("g", {}), gL = mk("g", {});
+  S.forEach(function (s) {
+    var r = RINGS[s[2]], c = pt((r[0] + r[1]) / 2, (s[3] + s[4]) / 2);
+    var path = mk("path", { d: arc(s[3], s[4], r[0], r[1]), "class": "slice", tabindex: "0", fill: DOM[s[1]].color, "fill-opacity": "0.12", "aria-label": posName(s[0]) + ": " + s[6] + ", " + PERK[s[7]] }, gS);
+    var t = mk("text", { x: c[0].toFixed(1), y: c[1].toFixed(1), "class": "lbl" }, gL); t.textContent = s[7];
+    slices[s[0]] = { path: path, text: t };
+    ["mouseenter", "focus", "click"].forEach(function (ev) { path.addEventListener(ev, function () { detail(s[0]); }); });
+  });
+  mk("circle", { cx: 0, cy: 0, r: 20, "class": "hub" });
+  var hub = mk("text", { x: 0, y: 0, "class": "hubtxt" });
+  var cornerSub = {};
+  [["TR", 222, -266], ["TL", -222, -266], ["BL", -222, 262], ["BR", 222, 262]].forEach(function (c) {
+    mk("text", { x: c[1], y: c[2], "class": "corner", fill: DOM[c[0]].color }).textContent = DOM[c[0]].name;
+    cornerSub[c[0]] = mk("text", { x: c[1], y: c[2] + 16, "class": "corner-sub" });
+  });
+
+  var cur = "expNew", box = document.getElementById("wDetail");
+  function idle() { box.innerHTML = '<div class="k">Slice details</div><div class="small">Hover or tap a slice to see what it gives and how many points it has now and in the proposal.</div>'; }
+  function detail(id) {
+    var s = BY[id], pr = P[cur], other = P[pr.pair], p = pr.a[id] || 0, q = other.a[id] || 0;
+    var ded = s[6] === "Hit Points" ? "HP +" + n(2 * p) : s[6] === "Mana" ? "Mana +" + n(3 * p) : s[6] === "Capacity" ? "Capacity +" + n(4 * p) : s[6] === "Mitigation" ? "Mitigation multiplier +" + (p * 0.075).toFixed(2) + "%" : "HP +" + n(2 * p) + ", mana +" + n(3 * p);
+    Object.keys(slices).forEach(function (k) { slices[k].path.classList.toggle("active", k === id); });
+    var nowP = cur.indexOf("Now") > 0 ? p : q, newP = cur.indexOf("Now") > 0 ? q : p;
+    box.innerHTML = '<div class="k">' + esc(posName(id) + " · " + DOM[s[1]].name + " domain · " + s[5] + " points") + '</div><div><b>Dedication:</b> ' + esc(s[6]) + " · " + esc(p ? ded : "empty here") + '<br><b>Perk when full:</b> ' + esc(PERK[s[7]]) + (p && p < s[5] ? ' <span class="pill warn">off, slice not full</span>' : p === s[5] ? ' <span class="pill good">on</span>' : "") + '</div><div class="small muted">Now ' + nowP + " · proposed " + newP + " of " + s[5] + (nowP !== newP ? " · changes" : "") + "</div>";
+  }
+  function render(name) {
+    cur = name; var pr = P[name], other = P[pr.pair], t = sum(pr), o = sum(other);
+    S.forEach(function (s) {
+      var sl = slices[s[0]], p = pr.a[s[0]] || 0, q = other.a[s[0]] || 0;
+      sl.path.setAttribute("fill-opacity", p === s[5] ? "0.95" : p ? "0.45" : "0.12");
+      sl.path.classList.remove("active"); sl.path.classList.toggle("next", p !== q);
+      sl.text.setAttribute("class", p === s[5] ? "lbl pick" : "lbl");
+      sl.text.textContent = p && p < s[5] ? String(p) : s[7];
+    });
+    hub.textContent = String(t.pts);
+    Object.keys(cornerSub).forEach(function (d) { cornerSub[d].textContent = (t.stage[d] ? "Stage " + t.stage[d] : "locked") + " · " + n(t.dom[d]) + (pr.rm[d] ? " + " + pr.rm[d] + " gem" : "") + " pts"; });
+    document.querySelectorAll("#wheelTabs .tab").forEach(function (b) { b.setAttribute("aria-selected", b.getAttribute("data-p") === name ? "true" : "false"); });
+    var diffs = S.filter(function (s) { return (pr.a[s[0]] || 0) !== (other.a[s[0]] || 0); }).map(function (s) {
+      var from = name.indexOf("Now") > 0 ? pr.a[s[0]] || 0 : other.a[s[0]] || 0, to = name.indexOf("Now") > 0 ? other.a[s[0]] || 0 : pr.a[s[0]] || 0;
+      return "<li><b>" + esc(posName(s[0])) + '</b> <span class="pts">' + from + " → " + to + " / " + s[5] + '</span><br><span class="small muted">' + esc(s[6] + " · " + PERK[s[7]]) + "</span></li>";
+    }).join("");
+    var h = "<h3>" + esc(pr.label) + ' <span class="tag">' + n(t.pts) + " of 1,196 points</span></h3>";
+    h += '<div class="totals" style="margin-top:8px"><div><b>+' + n(t.hp) + '</b><span>Hit points</span></div><div><b>+' + n(t.mana) + '</b><span>Mana</span></div><div><b>+' + n(t.cap) + '</b><span>Capacity</span></div><div><b>' + t.mitTxt + '%</b><span>Mitigation mult.</span></div><div><b>+' + (t.dmg) + '</b><span>Damage, healing (revelation)</span></div></div>';
+    h += '<p class="small" style="margin-top:10px"><b>Revelation:</b> ' + ["TL", "BL", "BR", "TR"].filter(function (d) { return t.stage[d]; }).map(function (d) { return esc(DOM[d].name) + " stage " + t.stage[d]; }).join(", ") + '</p>';
+    h += '<p class="small"><b>Perks on:</b> ' + esc(convList(t).join(" · ")) + "</p>";
+    h += '<p class="small"><b>Gems:</b></p><ul class="small" style="margin:0;padding-left:1.1em;display:grid;gap:4px">' + pr.gems.map(function (g) { return "<li>" + esc(g) + "</li>"; }).join("") + "</ul>";
+    h += '<h3 style="margin-top:14px">' + (name.indexOf("Now") > 0 ? "What the proposal changes" : "Changes from now") + "</h3><ul class=\"small\" style=\"margin:8px 0 0;padding-left:1.1em;display:grid;gap:6px\">" + diffs + "</ul>";
+    h += '<div class="code-row" style="margin-top:12px"><code class="c">' + pr.code + '</code><button class="inc" type="button" data-w="' + pr.code + '">Copy</button> <a class="small" href="https://www.tibia.com/community/?subtopic=wheelofdestinyplanner&amp;code=' + pr.code + '">tibia.com</a> · <a class="small" href="https://tibiapal.com/wheel-planner?subtopic=wheelofdestinyplanner&amp;code=' + pr.code + '">TibiaPal</a></div>';
+    document.getElementById("wSteps").innerHTML = h;
+    idle(); try { localStorage.setItem("venvil-hub-wheel", name); } catch (e) {}
+  }
+  document.querySelectorAll("#wheelTabs .tab").forEach(function (b) { b.addEventListener("click", function () { render(b.getAttribute("data-p")); }); });
+  var start = "expNew"; try { start = localStorage.getItem("venvil-hub-wheel") || "expNew"; } catch (e) {}
+  render(P[start] ? start : "expNew");
 })();
 </script>
 </body>
