@@ -434,7 +434,7 @@ table.crt td.neu { color: var(--muted); }
     <li data-tab="now"><a class="ch" href="#tab-now">Character</a>
       <ul class="sub"><li><a href="#top">Character sheet</a></li><li><a href="#screens">Screenshots I need</a></li><li><a href="#next">Do next</a></li><li><a href="#prehunt">Before a hunt</a></li></ul></li>
     <li data-tab="build"><a class="ch" href="#tab-build">Gear &amp; build</a>
-      <ul class="sub"><li><a href="#gear">Equipment</a></li><li><a href="#imbue">Imbuements</a></li><li><a href="#wheel">Wheel</a></li><li><a href="#wheel-plan">Wheel proposals</a></li><li><a href="#wheel-pick">Which Revelation</a></li><li><a href="#gems">Gems</a></li><li><a href="#systems">Blessings &amp; charms</a></li><li><a href="#prof">Proficiency</a></li></ul></li>
+      <ul class="sub"><li><a href="#gear">Equipment</a></li><li><a href="#imbue">Imbuements</a></li><li><a href="#wheel">Wheel</a></li><li><a href="#wheel-set">Your 3 presets</a></li><li><a href="#wheel-plan">Wheel proposals</a></li><li><a href="#wheel-pick">Which Revelation</a></li><li><a href="#gems">Gems</a></li><li><a href="#systems">Blessings &amp; charms</a></li><li><a href="#prof">Proficiency</a></li></ul></li>
     <li data-tab="hunt"><a class="ch" href="#tab-hunt">Hunting</a>
       <ul class="sub"><li><a href="#history">Where it hunted</a></li><li><a href="#open">Open to you</a></li><li><a href="#share">Sharing exp</a></li></ul></li>
     <li data-tab="progress"><a class="ch" href="#tab-progress">Progress</a>
@@ -560,7 +560,7 @@ table.crt td.neu { color: var(--muted); }
     <li class="urgent"><div><p><b>Hunt in the main set:</b> Sanguine Crossbow, Moonsilver Trail Hood, Soulshell, plus the Falcon Greaves and Winged Boots you share with Veritass, and the Flamingo amulet and Alicorn ring while they last. Distance +22 from items. At 11:34 you stood in the depot without a weapon or helmet and in the Unerring, whose imbuements have about 1.5 h left. See <a href="#gear">Equipment</a>.</p></div></li>
     <li><div><p><b>Shared legs and boots.</b> Ven Vil and Veritass share the Falcon Greaves and Winged Boots, so only one of them can wear them at a time. Whoever hunts without them loses distance +4, physical 7%, ice 7% and earth 7%. If you want both hunting the same day, tell me a budget and I'll add a buying plan for a second pair.</p></div></li>
     <li><div><p><b>Give the Soulpiercer a Vampirism</b> if you'll use it for death spawns; its third slot is empty.</p></div></li>
-    <li><div><p><b>Re-spec "exp" in a temple.</b> The proposed layout swaps the Divine Barrage augment and dead mitigation points for Ethereal Barrage augment I, Strong Ethereal Spear augment I and life leech +0.75%, keeping Divine Empowerment stage 3. Import code and the "boss" tweak: <a href="#wheel-plan">Wheel proposals</a>.</p></div></li>
+    <li><div><p><b>Re-spec "exp" in a temple.</b> The proposed layout swaps the Divine Barrage augment and dead mitigation points for Ethereal Barrage augment I, Strong Ethereal Spear augment I and life leech +0.75%, keeping Divine Empowerment stage 3. Then add "safe" (Gift of Life 3) in the unused Default-Preset slot for dangerous spawns. Codes for all three: <a href="#wheel-set">Your three presets</a>.</p></div></li>
     <li><div><p><b>The Way of the Monk is still open.</b> It gave Veritass +10 Wheel points. Ven Vil has 1,196 points, all placed in "exp".</p></div></li>
     <li><div><p><b>Eat before hunting.</b> Food showed 00:16 at 11:34. Stamina is full (42:00), so you get 150% exp right now.</p></div></li>
     <li><div><p><b>Proficiency already pays off.</b> Your Sanguine Crossbow is at 7 of 7, so it has every perk. The Soulbleeder (4 of 7) and Soulpiercer (none) would need levelling before they match it. See <a href="#prof">Proficiency</a>.</p></div></li>
@@ -815,18 +815,36 @@ table.crt td.neu { color: var(--muted); }
 
   <h3 class="tbl-h" id="wheel-plan">Proposals: more out of each preset <span class="tag">built and checked in the tibia.com planner, Nov 24</span></h3>
   <div class="note"><b>The rules that decide it</b> (from the planner's own help texts): a Revelation perk reaches stage 1 at 250 points in its domain, stage 2 at 500 and stage 3 at 1,000, and a gem's Revelation Mastery counts toward that. Your two Revelation Mastery gems are +150 each, so 850 points in a domain plus the gem make stage 3. A slice's conviction perk only works when the slice is full. Your damage comes from distance (165 in the main set before Sharpshooter) far more than from magic level (39 + 4 holy), so the Ethereal and Strong Ethereal Spear augments are worth more to you than the Divine Barrage one, and mitigation multiplier is close to worthless: your base mitigation is 1.3%, so +27.8% of it is about 0.4% less damage.</div>
-  <div class="tabs" id="wheelTabs" role="tablist" aria-label="Wheel presets">
-    <button class="tab" role="tab" type="button" data-p="expNow" aria-selected="false"><span class="dot" style="background:var(--bl)"></span>exp · now</button>
-    <button class="tab" role="tab" type="button" data-p="expNew" aria-selected="true"><span class="dot" style="background:var(--bl)"></span>exp · proposed <span class="rec">re-spec</span></button>
-    <button class="tab" role="tab" type="button" data-p="bossNow" aria-selected="false"><span class="dot" style="background:var(--br)"></span>boss · now</button>
-    <button class="tab" role="tab" type="button" data-p="bossNew" aria-selected="false"><span class="dot" style="background:var(--br)"></span>boss · proposed</button>
+  <h3 class="tbl-h" id="wheel-set">Your three presets <span class="tag">import these · 1,196 points each</span></h3>
+  <div class="grid3">
+    <div class="card">
+      <h3 style="color:var(--bl)">exp <span class="tag">every normal hunt</span></h3>
+      <p class="small"><b>Divine Empowerment 3 + Gift of Life 1.</b> Ethereal Barrage I, Strong Ethereal Spear I, distance +2, life leech +0.75%, mana leech +0.25%. HP +992, mana +1,200, damage and healing +27.</p>
+      <div class="code-row"><code class="c">P0Y2AAgxRvIKHnbQRmGsFFTkxLAZLq_0FAmVVTjlMJAA</code><button class="inc" type="button" data-w="P0Y2AAgxRvIKHnbQRmGsFFTkxLAZLq_0FAmVVTjlMJAA">Copy</button></div>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--br)">boss <span class="tag">bosses, short hard fights</span></h3>
+      <p class="small"><b>Avatar of Light 3 + Gift of Life 1.</b> Strong Ethereal Spear II (+380%), Ballistic Mastery (+10% critical damage with a crossbow), life leech +1.5%. HP +900, mana +1,725, damage and healing +26. Cast Avatar (60 min cooldown) when the boss fight starts.</p>
+      <div class="code-row"><code class="c">P0Y2BIYQCCFG8QyWDEAKH0QILeDNNAMtNO6DCo_QcDdS51AA</code><button class="inc" type="button" data-w="P0Y2BIYQCCFG8QyWDEAKH0QILeDNNAMtNO6DCo_QcDdS51AA">Copy</button></div>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--tl)">safe <span class="tag">new or dangerous spawns</span></h3>
+      <p class="small"><b>Gift of Life 3.</b> A killing blow heals 30% HP and mana once per 10 h of fighting. Positional Tactics (distance +3 while nothing is next to you), Ethereal Barrage I, Strong Ethereal Spear I, distance +2, Salvation gem +6%. HP +1,092, mana +1,500, damage and healing +22.</p>
+      <div class="code-row"><code class="c">P0OzEtJYWBYVqKNwMDQ4q3EZBk0AOTSECHQe0_GKhzqQMA</code><button class="inc" type="button" data-w="P0OzEtJYWBYVqKNwMDQ4q3EZBk0AOTSECHQe0_GKhzqQMA">Copy</button></div>
+    </div>
   </div>
-  <div class="tabs" id="wheelTabs2" role="tablist" aria-label="One build per Revelation perk" style="margin-top:8px">
-    <span class="ctl-label" style="align-self:center">One build per Revelation</span>
-    <button class="tab" role="tab" type="button" data-p="gol" aria-selected="false"><span class="dot" style="background:var(--tl)"></span>Gift of Life</button>
+  <p class="small muted">I also tried a damage-only "exp" without Gift of Life, a Divine Empowerment boss preset for long fights and a boss with +2 distance. Within 1,196 points each one lost more than it gained, so these three are the set. The Divine Grenade build is below only for comparison.</p>
+  <div class="tabs" id="wheelTabs" role="tablist" aria-label="Your presets">
+    <span class="ctl-label" style="align-self:center">Your presets</span>
+    <button class="tab" role="tab" type="button" data-p="expNew" aria-selected="true"><span class="dot" style="background:var(--bl)"></span>exp</button>
+    <button class="tab" role="tab" type="button" data-p="bossNew" aria-selected="false"><span class="dot" style="background:var(--br)"></span>boss</button>
+    <button class="tab" role="tab" type="button" data-p="gol" aria-selected="false"><span class="dot" style="background:var(--tl)"></span>safe</button>
+  </div>
+  <div class="tabs" id="wheelTabs2" role="tablist" aria-label="Compare with" style="margin-top:8px">
+    <span class="ctl-label" style="align-self:center">Compare with</span>
+    <button class="tab" role="tab" type="button" data-p="expNow" aria-selected="false"><span class="dot" style="background:var(--bl)"></span>exp · now</button>
+    <button class="tab" role="tab" type="button" data-p="bossNow" aria-selected="false"><span class="dot" style="background:var(--br)"></span>boss · now</button>
     <button class="tab" role="tab" type="button" data-p="dg" aria-selected="false"><span class="dot" style="background:var(--tr)"></span>Divine Grenade</button>
-    <button class="tab" role="tab" type="button" data-p="expNew" aria-selected="true"><span class="dot" style="background:var(--bl)"></span>Divine Empowerment</button>
-    <button class="tab" role="tab" type="button" data-p="bossNew" aria-selected="false"><span class="dot" style="background:var(--br)"></span>Avatar of Light</button>
   </div>
   <div class="wheel-main">
     <div class="wheel-box">
@@ -917,7 +935,7 @@ table.crt td.neu { color: var(--muted); }
     <h3>How to switch</h3>
     <ol class="small">
       <li>Go to a temple: changing points is free there.</li>
-      <li>Wheel of Destiny → Manage Presets → <b>New</b>, name it ("exp2"), then <b>Import</b> and paste the code. Your old preset stays as a backup.</li>
+      <li>Wheel of Destiny → Manage Presets → <b>New</b>, name it ("exp2"), then <b>Import</b> and paste the code. Your old preset stays as a backup; once the new one checks out, delete the old one and rename. Do the same for "boss", and turn the unused "Default-Preset" into "safe".</li>
       <li>Check the right-hand panel against the totals above, then <b>Apply</b>.</li>
       <li>The codes keep the gems your presets use now. For "boss", swap the top-left gem in the Gem Atelier afterwards.</li>
     </ol>
@@ -1669,7 +1687,7 @@ table.crt td.neu { color: var(--muted); }
       a: { TL1: 50, TL2b: 75, TL3c: 100, TL4b: 26, BL2a: 75, BL2b: 75, BL3a: 100, BL3b: 100, BL3c: 100, BL4a: 50, BL4b: 150, BL5: 200, BR1: 50, BR2b: 45 },
       gems: ["Top-left, resonance I: lesser gem, HP +100, energy +1% (matches, +1 damage and healing)", "Bottom-left, resonance III: greater gem 5, Revelation Mastery Divine Empowerment +150, ice +2%, mana +150, earth +1% (matches, +2)", "Bottom-right, resonance I: greater gem 2, only mitigation multiplier 20% (no match)"],
       code: "P0Y2AAASkwmeJtBCYZjHQZjIAUA8OJaSlAUv0_CCizaspxKgEA", check: [1000, 825, 1000, "27.82"] },
-    expNew: { label: "exp · proposed", pair: "expNow", rm: { BL: 150 }, color: "var(--bl)",
+    expNew: { label: "exp", pair: "expNow", rm: { BL: 150 }, color: "var(--bl)",
       a: { TL1: 50, TL2a: 75, TL2b: 75, TL3b: 100, TL3c: 46, BL1: 50, BL2a: 75, BL2b: 75, BL3a: 100, BL3b: 100, BL3c: 100, BL4b: 150, BL5: 200 },
       gems: ["Top-left, resonance I: lesser gem, HP +100, energy +1% (matches, +1)", "Bottom-left, resonance III: greater gem 5, all three mods (matches, +2)", "Bottom-right: no resonance, so gem 2 sits idle (it only gave mitigation)"],
       code: "P0Y2AAgxRvIKHnbQRmGsFFTkxLAZLq_0FAmVVTjlMJAA", check: [992, 1200, 800, "22.50"] },
@@ -1677,11 +1695,11 @@ table.crt td.neu { color: var(--muted); }
       a: { TL1: 50, TL2a: 75, TL3a: 100, TL3b: 100, TL4b: 20, BR1: 50, BR2a: 75, BR2b: 25, BR3a: 100, BR3c: 100, BR4a: 150, BR4b: 150, BR5: 200 },
       gems: ["Bottom-right, resonance III: greater gem 7, Revelation Mastery Avatar of Light +150, fire and ice +1%, HP +100, energy +1% (matches, +2)", "Top-left, resonance II: greater gem 3, capacity +200, fire +1%, physical +1%; Salvation augment off (no match)"],
       code: "P0Y2BIYWBgEEnxZgABIwYIJQkS9GaYBiRTpp3QYVD7DwbqXOoA", check: [900, 1725, 1000, "9.00"] },
-    bossNew: { label: "boss · proposed", pair: "bossNow", rm: { BR: 150 }, color: "var(--br)",
+    bossNew: { label: "boss", pair: "bossNow", rm: { BR: 150 }, color: "var(--br)",
       a: { TL1: 50, TL2a: 75, TL3a: 100, TL3b: 100, BR1: 50, BR2a: 75, BR2b: 46, BR3a: 100, BR3c: 100, BR4a: 150, BR4b: 150, BR5: 200 },
       gems: ["Bottom-right, resonance III: greater gem 7, all three mods (matches, +2)", "Top-left, resonance II: swap gem 3 for a regular top-left gem: +1 damage and healing and both its mods"],
       code: "P0Y2BIYQCCFG8QyWDEAKH0QILeDNNAMtNO6DCo_QcDdS51AA", check: [900, 1725, 1000, "9.07"] },
-    gol: { label: "Gift of Life build", pair: "expNew", rm: {}, color: "var(--tl)",
+    gol: { label: "safe", pair: "expNew", rm: {}, color: "var(--tl)",
       a: { TL1: 50, TL2a: 75, TL2b: 75, TL3a: 100, TL3b: 100, TL3c: 100, TL4a: 150, TL4b: 150, TL5: 200, TR3c: 100, BL1: 50, BL2a: 46 },
       gems: ["Top-left, resonance III: greater gem 3, all three mods: Salvation +6% base healing, capacity +200, fire +1%, physical +1% (matches, +2)", "Bottom-right: no resonance, so gem 7 and its Avatar of Light points sit idle"],
       code: "P0OzEtJYWBYVqKNwMDQ4q3EZBk0AOTSECHQe0_GKhzqQMA", check: [1092, 1500, 200, "22.50"] },
