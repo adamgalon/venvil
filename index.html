@@ -434,7 +434,7 @@ table.crt td.neu { color: var(--muted); }
     <li data-tab="now"><a class="ch" href="#tab-now">Character</a>
       <ul class="sub"><li><a href="#top">Character sheet</a></li><li><a href="#screens">Screenshots I need</a></li><li><a href="#next">Do next</a></li><li><a href="#prehunt">Before a hunt</a></li></ul></li>
     <li data-tab="build"><a class="ch" href="#tab-build">Gear &amp; build</a>
-      <ul class="sub"><li><a href="#gear">Equipment</a></li><li><a href="#imbue">Imbuements</a></li><li><a href="#wheel">Wheel</a></li><li><a href="#wheel-plan">Wheel proposals</a></li><li><a href="#gems">Gems</a></li><li><a href="#systems">Blessings &amp; charms</a></li><li><a href="#prof">Proficiency</a></li></ul></li>
+      <ul class="sub"><li><a href="#gear">Equipment</a></li><li><a href="#imbue">Imbuements</a></li><li><a href="#wheel">Wheel</a></li><li><a href="#wheel-plan">Wheel proposals</a></li><li><a href="#wheel-pick">Which Revelation</a></li><li><a href="#gems">Gems</a></li><li><a href="#systems">Blessings &amp; charms</a></li><li><a href="#prof">Proficiency</a></li></ul></li>
     <li data-tab="hunt"><a class="ch" href="#tab-hunt">Hunting</a>
       <ul class="sub"><li><a href="#history">Where it hunted</a></li><li><a href="#open">Open to you</a></li><li><a href="#share">Sharing exp</a></li></ul></li>
     <li data-tab="progress"><a class="ch" href="#tab-progress">Progress</a>
@@ -821,6 +821,13 @@ table.crt td.neu { color: var(--muted); }
     <button class="tab" role="tab" type="button" data-p="bossNow" aria-selected="false"><span class="dot" style="background:var(--br)"></span>boss · now</button>
     <button class="tab" role="tab" type="button" data-p="bossNew" aria-selected="false"><span class="dot" style="background:var(--br)"></span>boss · proposed</button>
   </div>
+  <div class="tabs" id="wheelTabs2" role="tablist" aria-label="One build per Revelation perk" style="margin-top:8px">
+    <span class="ctl-label" style="align-self:center">One build per Revelation</span>
+    <button class="tab" role="tab" type="button" data-p="gol" aria-selected="false"><span class="dot" style="background:var(--tl)"></span>Gift of Life</button>
+    <button class="tab" role="tab" type="button" data-p="dg" aria-selected="false"><span class="dot" style="background:var(--tr)"></span>Divine Grenade</button>
+    <button class="tab" role="tab" type="button" data-p="expNew" aria-selected="true"><span class="dot" style="background:var(--bl)"></span>Divine Empowerment</button>
+    <button class="tab" role="tab" type="button" data-p="bossNew" aria-selected="false"><span class="dot" style="background:var(--br)"></span>Avatar of Light</button>
+  </div>
   <div class="wheel-main">
     <div class="wheel-box">
       <svg class="wheel" id="wheelSvg" viewBox="-300 -300 600 600" role="img" aria-label="Paladin Wheel of Destiny with the selected Ven Vil preset"></svg>
@@ -830,6 +837,24 @@ table.crt td.neu { color: var(--muted); }
     </div>
     <div class="wsteps" id="wSteps"></div>
   </div>
+  <h3 class="tbl-h" id="wheel-pick">One build per Revelation: what to choose</h3>
+  <div class="scroll">
+    <table class="t-wide">
+      <thead><tr><th>Build</th><th>Points for stage 3</th><th>What the Revelation does at stage 3</th><th>Other perks it gets</th><th>Gift of Life</th><th class="n">HP · mana</th><th class="n">Damage, healing</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td class="name" style="color:var(--bl)">Divine Empowerment</td><td>850 bottom-left + 150 from gem 5</td><td>3×3 holy field, +12% damage while you stand in it for 5 s, 24 s cooldown</td><td>Ethereal Barrage I, Strong Ethereal Spear I, distance +2, life leech +0.75%, Divine Caldera I, Divine Dazzle I</td><td>stage 1</td><td class="n">+992 · +1,200</td><td class="n">+27</td><td><span class="pill good">Hunting</span></td></tr>
+        <tr><td class="name" style="color:var(--br)">Avatar of Light</td><td>871 bottom-right + 150 from gem 7</td><td>15 s avatar: 15% less damage taken, every attack crits with +15% critical damage, 60 min cooldown</td><td>Strong Ethereal Spear II (+380%), Ballistic Mastery (+10% critical damage with a crossbow), life leech +1.5%</td><td>stage 1</td><td class="n">+900 · +1,725</td><td class="n">+26</td><td><span class="pill good">Bosses</span></td></tr>
+        <tr><td class="name" style="color:var(--tl)">Gift of Life</td><td>all 1,000 top-left (no gem helps)</td><td>A hit that would kill you heals 30% HP and 30% mana instead and cuts cooldowns by 60 s; once per 10 h of fighting (stage 1: 20%, 30 h)</td><td>Positional Tactics (distance +3 while nothing is next to you), Ethereal Barrage I, Strong Ethereal Spear I, Divine Barrage I, distance +2, Salvation gem fully on (+6% healing)</td><td>stage 3</td><td class="n">+1,092 · +1,500</td><td class="n">+22</td><td><span class="pill">Dangerous spawns</span></td></tr>
+        <tr><td class="name" style="color:var(--tr)">Divine Grenade</td><td>all 1,000 top-right (no gem helps)</td><td>Holy marker on the target explodes after 3 s, +32% base damage over stage 1, 14 s cooldown</td><td>Ethereal Barrage II (+10% crit chance on it), distance +2, life leech +0.75%, Divine Caldera I, Divine Dazzle I</td><td><b>none</b></td><td class="n">+1,000 · +1,938</td><td class="n">+21</td><td><span class="pill bad">Skip</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ol class="todo">
+    <li><div><p><b>Hunting: Divine Empowerment</b> (the proposed "exp"). It's the only build with two Revelations at once, because gem 5 pays 150 of the 1,000 points: Divine Empowerment 3 plus Gift of Life 1. It also has the most damage and healing (+27) and augments on the spells you actually cast.</p></div></li>
+    <li><div><p><b>Bosses: Avatar of Light</b> (the proposed "boss"). Gem 7 pays 150 points here too, and the build carries Strong Ethereal Spear II and Ballistic Mastery, both made for single targets.</p></div></li>
+    <li><div><p><b>Third preset: Gift of Life</b>, in the unused "Default-Preset" slot. Use it on new or dangerous spawns: a killing blow heals you 30% once per 10 h of fighting, instead of 20% once per 30 h. You give up the +12% damage field for Positional Tactics (distance +3) and 100 more HP. Its code keeps gem 3 in the top-left vessel, where resonance III turns on its Salvation +6%.</p></div></li>
+    <li><div><p><b>Divine Grenade: skip it.</b> It costs all 1,000 points because none of your gems helps, it's holy damage that grows with magic level (39) rather than distance (165), it uses the same 2 s attack cooldown as your barrages, the top-right domain has no greater gem, and the build has no Gift of Life at all. Its only bright spot, Ethereal Barrage II, isn't worth that.</p></div></li>
+  </ol>
   <div class="grid2">
     <div class="card">
       <h3 style="color:var(--bl)">exp → better exp <span class="pill good">clear gain</span></h3>
@@ -1655,7 +1680,15 @@ table.crt td.neu { color: var(--muted); }
     bossNew: { label: "boss · proposed", pair: "bossNow", rm: { BR: 150 }, color: "var(--br)",
       a: { TL1: 50, TL2a: 75, TL3a: 100, TL3b: 100, BR1: 50, BR2a: 75, BR2b: 46, BR3a: 100, BR3c: 100, BR4a: 150, BR4b: 150, BR5: 200 },
       gems: ["Bottom-right, resonance III: greater gem 7, all three mods (matches, +2)", "Top-left, resonance II: swap gem 3 for a regular top-left gem: +1 damage and healing and both its mods"],
-      code: "P0Y2BIYQCCFG8QyWDEAKH0QILeDNNAMtNO6DCo_QcDdS51AA", check: [900, 1725, 1000, "9.07"] }
+      code: "P0Y2BIYQCCFG8QyWDEAKH0QILeDNNAMtNO6DCo_QcDdS51AA", check: [900, 1725, 1000, "9.07"] },
+    gol: { label: "Gift of Life build", pair: "expNew", rm: {}, color: "var(--tl)",
+      a: { TL1: 50, TL2a: 75, TL2b: 75, TL3a: 100, TL3b: 100, TL3c: 100, TL4a: 150, TL4b: 150, TL5: 200, TR3c: 100, BL1: 50, BL2a: 46 },
+      gems: ["Top-left, resonance III: greater gem 3, all three mods: Salvation +6% base healing, capacity +200, fire +1%, physical +1% (matches, +2)", "Bottom-right: no resonance, so gem 7 and its Avatar of Light points sit idle"],
+      code: "P0OzEtJYWBYVqKNwMDQ4q3EZBk0AOTSECHQe0_GKhzqQMA", check: [1092, 1500, 200, "22.50"] },
+    dg: { label: "Divine Grenade build", pair: "expNew", rm: {}, color: "var(--tr)",
+      a: { TR1: 50, TR2a: 75, TR2b: 75, TR3a: 100, TR3b: 100, TR3c: 100, TR4a: 150, TR4b: 150, TR5: 200, TL1: 50, TL2a: 21, TL2b: 75, BL1: 50 },
+      gems: ["Top-left, resonance I: lesser gem, HP +100, energy +1% (matches, +1)", "Top-right, resonance III: no gem there; you have no greater top-right gem, a regular one would give both its mods", "Bottom-left: no resonance, so gem 5 and its Divine Empowerment points sit idle"],
+      code: "P0Y2BgSJl2goFB1DtlGoO3kZF3CgODEQMqUP8PAsqsmnKcSgA", check: [1000, 1938, 800, "3.75"] }
   };
 
   // ---------- what a layout gives ----------
@@ -1676,6 +1709,7 @@ table.crt td.neu { color: var(--muted); }
   Object.keys(P).forEach(function (k) { var t = sum(P[k]), c = P[k].check; console.assert(t.hp === c[0] && t.mana === c[1] && t.cap === c[2] && t.mitTxt === c[3], "wheel totals " + k); });
   console.assert(sum(P.expNow).pts === 1196 && sum(P.expNew).pts === 1196 && sum(P.bossNow).pts === 1195 && sum(P.bossNew).pts === 1196, "wheel points");
   console.assert(sum(P.expNew).stage.BL === 3 && sum(P.bossNew).stage.BR === 3 && sum(P.expNew).stage.TL === 1 && sum(P.bossNew).stage.TL === 1, "wheel stages");
+  console.assert(sum(P.gol).pts === 1196 && sum(P.dg).pts === 1196 && sum(P.gol).stage.TL === 3 && sum(P.dg).stage.TR === 3 && sum(P.dg).stage.TL === 0, "revelation builds");
   function convList(t) {
     var o = [];
     if (t.conv["+1"]) o.push("Distance +" + t.conv["+1"]);
@@ -1717,8 +1751,7 @@ table.crt td.neu { color: var(--muted); }
     var s = BY[id], pr = P[cur], other = P[pr.pair], p = pr.a[id] || 0, q = other.a[id] || 0;
     var ded = s[6] === "Hit Points" ? "HP +" + n(2 * p) : s[6] === "Mana" ? "Mana +" + n(3 * p) : s[6] === "Capacity" ? "Capacity +" + n(4 * p) : s[6] === "Mitigation" ? "Mitigation multiplier +" + (p * 0.075).toFixed(2) + "%" : "HP +" + n(2 * p) + ", mana +" + n(3 * p);
     Object.keys(slices).forEach(function (k) { slices[k].path.classList.toggle("active", k === id); });
-    var nowP = cur.indexOf("Now") > 0 ? p : q, newP = cur.indexOf("Now") > 0 ? q : p;
-    box.innerHTML = '<div class="k">' + esc(posName(id) + " · " + DOM[s[1]].name + " domain · " + s[5] + " points") + '</div><div><b>Dedication:</b> ' + esc(s[6]) + " · " + esc(p ? ded : "empty here") + '<br><b>Perk when full:</b> ' + esc(PERK[s[7]]) + (p && p < s[5] ? ' <span class="pill warn">off, slice not full</span>' : p === s[5] ? ' <span class="pill good">on</span>' : "") + '</div><div class="small muted">Now ' + nowP + " · proposed " + newP + " of " + s[5] + (nowP !== newP ? " · changes" : "") + "</div>";
+    box.innerHTML = '<div class="k">' + esc(posName(id) + " · " + DOM[s[1]].name + " domain · " + s[5] + " points") + '</div><div><b>Dedication:</b> ' + esc(s[6]) + " · " + esc(p ? ded : "empty here") + '<br><b>Perk when full:</b> ' + esc(PERK[s[7]]) + (p && p < s[5] ? ' <span class="pill warn">off, slice not full</span>' : p === s[5] ? ' <span class="pill good">on</span>' : "") + '</div><div class="small muted">Here ' + p + " of " + s[5] + " · " + esc(other.label) + " " + q + (p !== q ? " · differs" : "") + "</div>";
   }
   function render(name) {
     cur = name; var pr = P[name], other = P[pr.pair], t = sum(pr), o = sum(other);
@@ -1731,7 +1764,7 @@ table.crt td.neu { color: var(--muted); }
     });
     hub.textContent = String(t.pts);
     Object.keys(cornerSub).forEach(function (d) { cornerSub[d].textContent = (t.stage[d] ? "Stage " + t.stage[d] : "locked") + " · " + n(t.dom[d]) + (pr.rm[d] ? " + " + pr.rm[d] + " gem" : "") + " pts"; });
-    document.querySelectorAll("#wheelTabs .tab").forEach(function (b) { b.setAttribute("aria-selected", b.getAttribute("data-p") === name ? "true" : "false"); });
+    document.querySelectorAll("#wheelTabs .tab, #wheelTabs2 .tab").forEach(function (b) { b.setAttribute("aria-selected", b.getAttribute("data-p") === name ? "true" : "false"); });
     var diffs = S.filter(function (s) { return (pr.a[s[0]] || 0) !== (other.a[s[0]] || 0); }).map(function (s) {
       var from = name.indexOf("Now") > 0 ? pr.a[s[0]] || 0 : other.a[s[0]] || 0, to = name.indexOf("Now") > 0 ? other.a[s[0]] || 0 : pr.a[s[0]] || 0;
       return "<li><b>" + esc(posName(s[0])) + '</b> <span class="pts">' + from + " → " + to + " / " + s[5] + '</span><br><span class="small muted">' + esc(s[6] + " · " + PERK[s[7]]) + "</span></li>";
@@ -1741,12 +1774,12 @@ table.crt td.neu { color: var(--muted); }
     h += '<p class="small" style="margin-top:10px"><b>Revelation:</b> ' + ["TL", "BL", "BR", "TR"].filter(function (d) { return t.stage[d]; }).map(function (d) { return esc(DOM[d].name) + " stage " + t.stage[d]; }).join(", ") + '</p>';
     h += '<p class="small"><b>Perks on:</b> ' + esc(convList(t).join(" · ")) + "</p>";
     h += '<p class="small"><b>Gems:</b></p><ul class="small" style="margin:0;padding-left:1.1em;display:grid;gap:4px">' + pr.gems.map(function (g) { return "<li>" + esc(g) + "</li>"; }).join("") + "</ul>";
-    h += '<h3 style="margin-top:14px">' + (name.indexOf("Now") > 0 ? "What the proposal changes" : "Changes from now") + "</h3><ul class=\"small\" style=\"margin:8px 0 0;padding-left:1.1em;display:grid;gap:6px\">" + diffs + "</ul>";
+    h += '<h3 style="margin-top:14px">' + (name.indexOf("Now") > 0 ? "What the proposal changes" : "Changes from " + esc(other.label)) + "</h3><ul class=\"small\" style=\"margin:8px 0 0;padding-left:1.1em;display:grid;gap:6px\">" + diffs + "</ul>";
     h += '<div class="code-row" style="margin-top:12px"><code class="c">' + pr.code + '</code><button class="inc" type="button" data-w="' + pr.code + '">Copy</button> <a class="small" href="https://www.tibia.com/community/?subtopic=wheelofdestinyplanner&amp;code=' + pr.code + '">tibia.com</a> · <a class="small" href="https://tibiapal.com/wheel-planner?subtopic=wheelofdestinyplanner&amp;code=' + pr.code + '">TibiaPal</a></div>';
     document.getElementById("wSteps").innerHTML = h;
     idle(); try { localStorage.setItem("venvil-hub-wheel", name); } catch (e) {}
   }
-  document.querySelectorAll("#wheelTabs .tab").forEach(function (b) { b.addEventListener("click", function () { render(b.getAttribute("data-p")); }); });
+  document.querySelectorAll("#wheelTabs .tab, #wheelTabs2 .tab").forEach(function (b) { b.addEventListener("click", function () { render(b.getAttribute("data-p")); }); });
   var start = "expNew"; try { start = localStorage.getItem("venvil-hub-wheel") || "expNew"; } catch (e) {}
   render(P[start] ? start : "expNew");
 })();
